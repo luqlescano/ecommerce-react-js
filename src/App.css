@@ -1,3 +1,15 @@
+:root {
+    --dubie-bordo: #C00711;
+    --dubie-negro: #000;
+    --dubie-blanco: #fff;
+    --dubie-gris: #1F232D;
+    --dubie-gris-oscuro: #303030;
+    --dubie-gris-medio: #54595F;
+    --dubie-gris-claro: #f8f8f8;
+    --dubie-gris-hover: #d3d3d3;
+    --dubie-texto: #7a7a7a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +17,13 @@
     font-family: 'Raleway', sans-serif;
 }
 
+body {
+    background-color: var(--dubie-gris-claro);
+}
+
 #navbar {
-    background-color: #1F232D;
-    color: #fff;
+    background-color: var(--dubie-gris);
+    color: var(--dubie-blanco);
     height: 6.25rem;
     display: flex;
     align-items: center;
@@ -29,13 +45,13 @@
 }
 
 .menu a {
-    color: #fff;
+    color: var(--dubie-blanco);
     text-decoration: none;
     text-transform: uppercase;
 }
 
 .menu a:hover {
-    color: #d3d3d3;
+    color: var(--dubie-gris-hover);
 }
 
 #cartwidget {
@@ -47,4 +63,129 @@
 
 #cartwidget p {
     font-size: 1rem;
+}
+
+#itemlistcontainer, .error {
+    padding: 2rem 0rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.itemlistcontainer, .error {
+    display: flex;
+    justify-content: center;
+}
+
+.cargando {
+    font-weight: 200;
+    padding-top: 10rem;
+}
+
+.itemlist {
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    justify-content: center;
+}
+
+.item {
+    max-width: 14rem;
+    background-color: var(--dubie-blanco);
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    -webkit-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.1);
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.1);
+}
+
+.item img, .itemdetail img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
+
+.item h3, .item p, .itemdetail h3, .itemdetail p {
+    font-family: 'Roboto', sans-serif;
+}
+
+.item h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.precio {
+    color: var(--dubie-bordo);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.stock {
+    color: var(--dubie-texto);
+    font-weight: 300;
+    font-size: .8rem;
+}
+
+.itemdetailcontainer {
+    padding: 2rem 0rem;
+    display: flex;
+    gap: 2rem;
+    align-items: start;
+    justify-content: center;
+}
+
+.itemdetail {
+    min-width: 46rem;
+    max-width: 46rem;
+    background-color: var(--dubie-blanco);
+    padding: 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.itemdetail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.itemdetail-info h3 {
+    font-size: 1.2rem;
+}
+
+#itemcount {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-restar, .btn-sumar {
+    min-height: 2.2rem;
+    padding: 0rem 1rem;
+    background-color: var(--dubie-bordo);
+    color: var(--dubie-blanco);
+    border: none;
+    border-radius: .3rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-detalle, .btn-agregar-al-carrito {
+    min-height: 2.2rem;
+    padding: 0rem 1rem;
+    color: var(--dubie-texto);
+    border: none;
+    border-radius: .3rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-detalle:hover, .btn-agregar-al-carrito:hover {
+    background-color: var(--dubie-gris-hover);
 }

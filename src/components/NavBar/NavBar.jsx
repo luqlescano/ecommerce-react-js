@@ -1,19 +1,24 @@
 import dubieLogo from '../../assets/img/logo-imprenta-dubie-blanco-1877x597.png'
+import { Link } from 'react-router-dom'
 import CartWidget from './CartWidget'
 
 const NavBar = () => {
   return (
     <div id="navbar">
         <div className="brand">
-          <a href="#">
+          <Link to="/">
             <img src={dubieLogo} className="logo" alt="Logo Imprenta DUBIÉ" />
-          </a>
+          </Link>
           <h1 className="brandname">Imprenta DUBIÉ</h1>
         </div>
         <div className="menu">
           <ul>
-            <li><a href="#">Impresión Laser Color</a></li>
-            <li><a href="#">Impresión para Sublimar</a></li>
+            <li>
+              <Link to="/categoria/impresion-laser-color">Impresión Laser Color</Link>
+            </li>
+            <li>
+              <Link to="/categoria/impresion-para-sublimar">Impresión para Sublimar</Link>
+            </li>
           </ul>
         </div>
         <div className="cart">
