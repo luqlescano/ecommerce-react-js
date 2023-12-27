@@ -4,7 +4,7 @@ import obtenerProductos from "../utils/data"
 import ItemDetail from "../ItemDetail/ItemDetail"
 
 const ItemDetailContainer = () => {
-    const [producto, setProducto] = useState([])
+    const [producto, setProducto] = useState()
     const {id} = useParams()
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const ItemDetailContainer = () => {
             .catch((error) => {
                 console.error("Error al obtener productos:", error);
               });
-    }, [id])
+    }, [])
     return (
     <div className="itemdetailcontainer">
         <ItemDetail producto={producto} />

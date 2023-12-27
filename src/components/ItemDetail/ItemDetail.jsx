@@ -1,6 +1,10 @@
 import ItemCount from "../ItemCount/ItemCount"
 
 const ItemDetail = ({producto}) => {
+  if (!producto) {
+    return <p>Producto no encontrado...</p>;
+  }
+  
   return (
     <div className="itemdetail">
         <div className="itemdetail-img">
