@@ -14,6 +14,9 @@ const NavBar = () => {
         <div className="menu">
           <ul>
             <li>
+              <Link to="/">Todas las impresiones</Link>
+            </li>
+            <li>
               <Link to="/categoria/impresion-laser-color">Impresión Laser Color</Link>
             </li>
             <li>

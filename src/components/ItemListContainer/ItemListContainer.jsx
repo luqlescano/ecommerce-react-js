@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import obtenerProductos from "../utils/data"
+import { collection, getDocs, query, where } from "firebase/firestore"
+import db from "../../db/db"
 import ItemList from "../ItemList/ItemList"
 import useCargando from "../../hooks/useCargando"
 
@@ -12,21 +13,25 @@ const ItemListContainer = ({slogan}) => {
   useEffect(() => {
     mostrarCargando()
     
-    obtenerProductos
+    let consulta
+    const productosRef = collection(db, "productos")
+
+    if (categoria) {
+      consulta = query(productosRef, where("categoria", "==", categoria))
+    } else {
+      consulta = productosRef
+    }
+
+    getDocs(consulta)
       .then((respuesta) => {
-        if(categoria) {
-          const productosFiltrados = respuesta.filter((producto) => producto.categoria === categoria)
-          setProductos(productosFiltrados)
-        } else {
-            setProductos(respuesta)
-        }
+        let productosDb = respuesta.docs.map((producto) => {
+          return { id: producto.id, ...producto.data() }
+        })
+        productosDb.sort((a, b) => a.categoria.localeCompare(b.categoria))
+        setProductos(productosDb)
       })
-      .catch((error) => {
-        console.error("Error al obtener productos:", error);
-      })
-      .finally(() => {
-        ocultarCargando()
-      })
+      .catch((error) => console.error(error))
+      .finally(() => ocultarCargando())
   }, [categoria])
 
   return (
